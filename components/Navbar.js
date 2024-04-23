@@ -11,7 +11,7 @@ const Navbar = ()=>{
     return(<>
     <nav className="lg:flex justify-center">
         <div className="p-4">
-            <img src="beer.png" alt="" className="h-[25px] inline"/>
+            <img src="./beer.png" alt="" className="h-[25px] inline"/>
             <div className={`float-right flex flex-col gap-2 m-2 lg:hidden absolute right-4 top-4 z-20 `} onClick={navHandler}>
                 <hr className={`border-[0.7px] border-black w-[20px] ${nav?"cross":""}`}/>
                 <hr className={`border-[0.7px] border-black w-[20px] ${nav?"cross2":""}`}/>
