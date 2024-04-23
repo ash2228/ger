@@ -1,6 +1,6 @@
 "use client";
 import "@/app/account/style.css";
-import { signOut, useSession } from "next-auth/react";
+import { getSession, signOut, useSession } from "next-auth/react";
 import { React, useState, useEffect } from "react";
 
 function Page() {
@@ -9,11 +9,17 @@ function Page() {
   const [image, setImage] = useState(null);
 
   useEffect(() => {
-    if (session && session.user) {
-      setName(session.user.name);
-      setImage(session.user.image);
-    }
+    const fetchData = async () => {
+      if (session && session.user) {
+        setName(session.user.name);
+        setImage(session.user.image);
+      }
+      
+    };
+  
+    fetchData();
   }, [session]);
+  
 
   return (
     <>

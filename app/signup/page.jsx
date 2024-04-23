@@ -1,18 +1,15 @@
 "use client"
-import {React,useEffect,useState} from 'react'
+import {React,useEffect} from 'react'
 import '@/app/signup/page.css'
 import { signIn,useSession } from 'next-auth/react'
-import Google from 'next-auth/providers/google'
 
 function Page() {
     const {data:session} = useSession()
-    const [login,setLogin] = useState(false)
     useEffect(()=>{
-        if(session){
+        if(session && session.user){
             window.location.href = "/account"
-            console.log("Loged in")
         }
-    },[])
+    },[session])
   return (
     <>
     {
