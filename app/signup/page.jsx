@@ -1,7 +1,5 @@
 "use client"
 import React from 'react'
-import App from './wrapper'
-import { SessionProvider } from 'next-auth/react'
 import '@/app/signup/page.css'
 import { signIn,useSession } from 'next-auth/react'
 
