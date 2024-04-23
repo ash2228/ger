@@ -42,7 +42,7 @@ export default function Home(){
   </div>
   <button className='absolute top-[550px] text-4xl left-20 hidden lg:inline z-10 text-gray-500' onClick={scrollLeft}>{"<"}</button>
   <button className='absolute top-[550px] text-4xl left-[1200px] hidden lg:inline z-30 text-gray-500' onClick={scrollRight}>{">"}</button>
-  <div id='scrollContainer' style={{ transform: `translateX(-${scrollPosition}px)` }} className={`overflow-x-hidden lg:w-[900px] scroll flex flex-col lg:flex-row gap-20 mx-auto items-center  lg:ml-32 mt-10`}>
+  <div id='scrollContainer' style={{ transform: `translateX(-${scrollPosition}px)` }} className={`lg:overflow-x-hidden lg:w-[900px] scroll flex gap-20 mx-auto items-center w-[100%] overflow-x-scroll lg:ml-32 mt-10`}>
   <div className='flex-shrink-0 h-[400px] w-[300px] lg:h-[450px] lg:w-[350px] rounded-3xl bg-black ash lg:mt-20'>
     <img src="https://1000logos.net/wp-content/uploads/2020/04/Google-Pay-Logo-2018-500x314.png" alt="" className='p-20' />
 </div>
