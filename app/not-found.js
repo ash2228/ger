@@ -3,7 +3,8 @@ import "@/app/error.css"
  
 export default function Error(){
   return(<>
-  <div className="main_wrapper mx-auto">
+  <div className="lg:inline mt-20">
+  <div className="main_wrapper mt-28">
   <div className="main">
     <div className="antenna">
       <div className="antenna_shadow"></div>
@@ -68,6 +69,9 @@ export default function Error(){
     <div className="text_4043">4</div>
   </div>
 </div>
-
+  </div>
+  <div className="lg:hidden">
+    
+  </div>
   </>)
 }
