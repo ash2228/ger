@@ -3,6 +3,7 @@ import './page.css'
 import { useState } from 'react'
 export default function Home(){
   const [scrollPosition, setScrollPosition] = useState(0);
+  console.log('NEXTAUTH_SECRET:', process.env.NEXTAUTH_SECRET);
 
   const scrollLeft = () => {
     const scrollContainer = document.getElementById("scrollContainer");
