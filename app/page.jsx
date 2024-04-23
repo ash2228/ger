@@ -3,8 +3,6 @@ import './page.css'
 import { useState } from 'react'
 export default function Home(){
   const [scrollPosition, setScrollPosition] = useState(0);
-  console.log('NEXTAUTH_SECRET:', process.env.NEXTAUTH_SECRET);
-
   const scrollLeft = () => {
     const scrollContainer = document.getElementById("scrollContainer");
     if (scrollContainer) {
@@ -39,7 +37,7 @@ export default function Home(){
   </div>
   <div className="flex flex-col lg:float-right mx-5 lg:mx-40 lg:absolute right-0 top-[150px]">
   <span className="lg:mt-10 block font-medium lg:inline lg:float-right">Need help?</span>
-  <span className="block font-medium lg:inline lg:float-right text-blue-500">Ask Ashbot</span>
+  <span className="block font-medium lg:inline lg:float-right text-blue-500 cursor-pointer" onClick={()=>{window.location.href= "/ashbot"}}>Ask Ashbot</span>
   </div>
   <button className='absolute top-[550px] text-4xl left-20 hidden lg:inline z-10 text-gray-500' onClick={scrollLeft}>{"<"}</button>
   <button className='absolute top-[550px] text-4xl left-[1200px] hidden lg:inline z-30 text-gray-500' onClick={scrollRight}>{">"}</button>

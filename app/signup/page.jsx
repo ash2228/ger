@@ -1,16 +1,22 @@
 "use client"
-import React from 'react'
+import {React,useEffect,useState} from 'react'
 import '@/app/signup/page.css'
 import { signIn,useSession } from 'next-auth/react'
 import Google from 'next-auth/providers/google'
 
 function Page() {
     const {data:session} = useSession()
-    console.log(session);
-    
+    const [login,setLogin] = useState(false)
+    useEffect(()=>{
+        if(session){
+            window.location.href = "/account"
+            console.log("Loged in")
+        }
+    },[])
   return (
     <>
-    <div className="form lg:w-96 lg:m-auto lg:mt-24">
+    {
+    <div className="form lg:w-96 lg:m-auto mx-5 lg:mt-24 mt-16">
     <p>
         Welcome,<span>sign in to continue</span>
     </p>
@@ -41,6 +47,7 @@ function Page() {
                     <svg className="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 17 5-5-5-5"></path><path d="m13 17 5-5-5-5"></path></svg>
                 </button>
 </div>
+}
     </>
   )
 }
