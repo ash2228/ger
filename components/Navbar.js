@@ -22,7 +22,7 @@ const Navbar = ()=>{
                 <Link href={"https://www.kratosmort.info"} target="_blank" className="ml-[60px] lg:ml-0 lg:font-normal lg:text-xs" onClick={navHandler}>Portfolio</Link>
                 <Link href={"/signup"} className="ml-[60px] lg:ml-0 lg:font-normal lg:text-xs" onClick={navHandler}>Signup</Link>
                 <Link href={"/account"} className="ml-[60px] lg:ml-0 lg:font-normal lg:text-xs" onClick={navHandler}>Account</Link>
-                <Link href={"/ashbot"} className="ml-[60px] lg:ml-0 lg:font-normal lg:text-xs" onClick={navHandler}>Support</Link>
+                <Link href={"/support"} className="ml-[60px] lg:ml-0 lg:font-normal lg:text-xs" onClick={navHandler}>Support</Link>
                 <Link href={"/about"} className="ml-[60px] lg:ml-0 lg:font-normal lg:text-xs" onClick={navHandler}>About</Link>
                 <Link href={"/contacts"} className="ml-[60px] lg:ml-0 lg:font-normal lg:text-xs" onClick={navHandler}>Contact</Link>
             </div>
