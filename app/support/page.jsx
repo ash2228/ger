@@ -61,12 +61,12 @@ function Page() {
         <div>
           <div>
             <span className="ml-10">Choose an amount:</span>
-            <div className="ml-10 flex gap-2 ">
-              <div className="cursor-pointer bg-black text-white font-semibold font-sans px-5 rounded-full" onClick={()=>{setAmt(1000)}}>10</div>
-              <div className="cursor-pointer bg-black text-white font-semibold font-sans px-5 rounded-full" onClick={()=>{setAmt(5000)}}>50</div>
-              <div className="cursor-pointer bg-black text-white font-semibold font-sans px-5 rounded-full" onClick={()=>{setAmt(10000)}}>100</div>
-              <div className="cursor-pointer bg-black text-white font-semibold font-sans px-5 rounded-full" onClick={()=>{setAmt(50000)}}>500</div>
-              <div className="cursor-pointer bg-black text-white font-semibold font-sans px-5 rounded-full" onClick={()=>{setAmt(100000)}}>1000</div>
+            <div className="ml-10 grid grid-flow-col gap-3 grid-rows-2">
+              <div className="cursor-pointer bg-black text-white font-semibold font-sans px-5 rounded-full w-[70px]" onClick={()=>{setAmt(1000)}}>10</div>
+              <div className="cursor-pointer bg-black text-white font-semibold font-sans px-5 rounded-full w-[70px]" onClick={()=>{setAmt(5000)}}>50</div>
+              <div className="cursor-pointer bg-black text-white font-semibold font-sans px-5 rounded-full w-[70px]" onClick={()=>{setAmt(10000)}}>100</div>
+              <div className="cursor-pointer bg-black text-white font-semibold font-sans px-5 rounded-full w-[70px]" onClick={()=>{setAmt(50000)}}>500</div>
+              <div className="cursor-pointer bg-black text-white font-semibold font-sans px-5 rounded-full w-[70px]" onClick={()=>{setAmt(100000)}}>1000</div>
             </div>
           </div>
           <div>
