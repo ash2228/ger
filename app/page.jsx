@@ -13,7 +13,6 @@ export default function Home(){
       setScrollPosition(scrollContainer.scrollLeft - 300);
     }
   };
-
   const scrollRight = () => {
     const scrollContainer = document.getElementById("scrollContainer");
     if (scrollContainer) {
@@ -37,19 +36,19 @@ export default function Home(){
   </div>
   <div className="flex flex-col lg:float-right mx-5 lg:mx-40 lg:absolute right-0 top-[150px]">
   <span className="lg:mt-10 block font-medium lg:inline lg:float-right">Need help?</span>
-  <span className="block font-medium lg:inline lg:float-right text-blue-500 cursor-pointer" onClick={()=>{window.location.href= "/ashbot"}}>Ask Ashbot</span>
+  <span className="inline w-[100px] lg:w-auto font-medium lg:inline lg:float-right text-blue-500 cursor-pointer" onClick={()=>{window.location.href= "/ashbot"}}>Ask Ashbot</span>
   </div>
   <button className='absolute top-[550px] text-4xl left-20 hidden lg:inline z-10 text-gray-500' onClick={scrollLeft}>{"<"}</button>
   <button className='absolute top-[550px] text-4xl left-[1200px] hidden lg:inline z-30 text-gray-500' onClick={scrollRight}>{">"}</button>
-  <div id='scrollContainer' style={{ transform: `translateX(-${scrollPosition}px)` }} className={`lg:overflow-x-hidden lg:w-[900px] scroll flex gap-20 ml-5 lg:mx-auto items-center w-[90%] overflow-x-scroll lg:ml-32 mt-10`}>
-  <div className='flex-shrink-0 h-[400px] w-[300px] lg:h-[450px] lg:w-[350px] rounded-3xl bg-black ash lg:mt-20'>
+  <div id='scrollContainer' style={{ transform: `translateX(-${scrollPosition}px)` }} className={`lg:overflow-hidden pb-10 lg:w-[900px] scroll flex gap-20 ml-5 lg:mx-auto items-center w-[90%] overflow-x-scroll lg:ml-32 mt-10`}>
+  <div className='cursor-pointer flex-shrink-0 h-[400px] w-[300px] lg:h-[420px] lg:w-[300px] rounded-3xl bg-black ash lg:mt-20'>
     <img src="https://1000logos.net/wp-content/uploads/2020/04/Google-Pay-Logo-2018-500x314.png" alt="" className='p-20' />
 </div>
-<div className='h-[400px] flex-shrink-0 w-[300px] lg:h-[450px] lg:w-[350px] rounded-3xl ash lg:mt-20 object-contain'>
+<div className='cursor-pointer h-[400px] flex-shrink-0 w-[300px] lg:h-[420px] lg:w-[300px] rounded-3xl ash lg:mt-20 object-contain'>
     <img src="https://en.bitcoin.it/w/images/en/f/fb/Bitcoin_accepted_here_sign2.png" alt="" className='h-[100%] w-[100%]'/>
 
 </div>
-<div class="card overflow-hidden flex-shrink-0 h-[400px] w-[300px] lg:h-[450px] lg:w-[350px] rounded-3xl ash bg-transparent lg:mt-20">
+<div class="card flex-shrink-0 h-[400px] w-[300px] mr-10 mt-10 lg:h-[420px] lg:w-[300px] rounded-3xl ash bg-transparent lg:mt-20 lg:mr-20 float-right">
   <div class="background">
   </div>
   <div class="logo">
