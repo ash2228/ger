@@ -1,18 +1,23 @@
 "use client"
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import "@/app/support/style.css";
 import Btn from "./btn";
 import Btn2 from "./btn2";
 import Script from "next/script";
 import { initiate } from "../actions/useractions";
+import { fetchpayments } from "../actions/useractions";
+import { ToastContainer, toast } from 'react-toastify'
+
+
 
 function Page() {
+  
   let [paymentForm,setPaymentForm] = useState({})
   let [name,setName] = useState("");
   let [msg,setMsg] = useState("");
   let [amt,setAmt] = useState(100);
   const pay = async (amount) => {
-    let a = await initiate(amount,msg,paymentForm,name)
+    let a = await initiate(amount,msg,paymentForm,name,msg)
     let orderid = a.id
     var options = {
       key: process.env.RAZ_ID, // Enter the Key ID generated from the Dashboard
@@ -49,6 +54,15 @@ function Page() {
     }
   };
   const [noti,setNoti] = useState("");
+  const [payments,setPayments] = useState([]);
+  const getData = async ()=>{
+    let a = await fetchpayments();
+    setPayments(a)
+
+  }
+  useEffect(()=>{
+    getData()
+  },[])
   return (
     <>
       <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
@@ -109,6 +123,15 @@ function Page() {
             <div className="text-red-600">{noti}</div>
             <Btn2 />
           </div>
+        </div>
+      </div>
+      <div className="h-auto w-[300px] bg-white rounded-3xl mx-auto p-5 lg:absolute left-[1000px]">
+        <h1 className="text-center font-medium fontsemibold">Supporters</h1>
+        <div>
+        {payments.map(item =>{ 
+        return <h1 className="font-medium mt-5" key={item.key}>{item.name} donated <span className="font-bold">₹{item.amount}</span><h1 className="font-normal">{item.message}</h1></h1>
+        
+        })}
         </div>
       </div>
     </>

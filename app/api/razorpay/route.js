@@ -42,7 +42,6 @@ export const GET = async(req)=> {
       // Update the payment status
       const updatedPayment = await payment.findOneAndUpdate({oid: body.
       razorpay_order_id}, {done: "true"}, {new: true})
-      fs.writeFile("done.txt","payment done");
       return NextResponse.redirect(`${process.env.WEB_URL}/?paymentdone=true`)
       }
       else{
