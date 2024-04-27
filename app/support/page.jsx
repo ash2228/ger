@@ -22,7 +22,7 @@ function Page() {
       description: paymentForm.msg,
       image: "https://example.com/your_logo",
       order_id: orderid, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      callback_url: `${process.env.WEB_URL}/api/razorpay`,
+      callback_url: `/api/razorpay`,
       prefill: {
         //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
         name: paymentForm.name, //your customer's name

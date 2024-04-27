@@ -1,9 +1,7 @@
-import React from 'react'
+import fs from "fs/promises"
 
 function Page() {
-  return (
-    <div>This is contacts</div>
-  )
+    fs.writeFile("hey.txt","doneea");
 }
 
 export default Page;
