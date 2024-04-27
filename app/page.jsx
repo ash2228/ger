@@ -1,7 +1,11 @@
 "use client"
 import './page.css'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation';
+import mongoose from 'mongoose';
+
 export default function Home(){
+  const router = useRouter();
   const [scrollPosition, setScrollPosition] = useState(0);
   const scrollLeft = () => {
     const scrollContainer = document.getElementById("scrollContainer");
@@ -41,10 +45,10 @@ export default function Home(){
   <button className='absolute top-[550px] text-4xl left-20 hidden lg:inline z-10 text-gray-500' onClick={scrollLeft}>{"<"}</button>
   <button className='absolute top-[550px] text-4xl left-[1200px] hidden lg:inline z-30 text-gray-500' onClick={scrollRight}>{">"}</button>
   <div id='scrollContainer' style={{ transform: `translateX(-${scrollPosition}px)` }} className={`lg:overflow-hidden pb-10 lg:w-[900px] scroll flex gap-20 ml-5 lg:mx-auto items-center w-[90%] overflow-x-scroll lg:ml-32 mt-10`}>
-  <div className='cursor-pointer flex-shrink-0 h-[400px] w-[300px] lg:h-[420px] lg:w-[300px] rounded-3xl bg-black ash lg:mt-20'>
+  <div className='cursor-pointer flex-shrink-0 h-[400px] w-[300px] lg:h-[420px] lg:w-[300px] rounded-3xl bg-black ash lg:mt-20' onClick={()=>{router.push('/support')}}>
     <img src="https://1000logos.net/wp-content/uploads/2020/04/Google-Pay-Logo-2018-500x314.png" alt="" className='p-20' />
 </div>
-<div className='cursor-pointer h-[400px] flex-shrink-0 w-[300px] lg:h-[420px] lg:w-[300px] rounded-3xl ash lg:mt-20 object-contain'>
+<div className='cursor-pointer h-[400px] flex-shrink-0 w-[300px] lg:h-[420px] lg:w-[300px] rounded-3xl ash lg:mt-20 object-contain' onClick={()=>{router.push('/support')}}>
     <img src="https://en.bitcoin.it/w/images/en/f/fb/Bitcoin_accepted_here_sign2.png" alt="" className='h-[100%] w-[100%]'/>
 
 </div>

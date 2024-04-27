@@ -7,24 +7,25 @@ import Script from "next/script";
 import { initiate } from "../actions/useractions";
 
 function Page() {
-  const [name,setName] = useState("")
   let [paymentForm,setPaymentForm] = useState({})
-  let [amt,setAmt] = useState(null);
+  let [name,setName] = useState("");
+  let [msg,setMsg] = useState("");
+  let [amt,setAmt] = useState(100);
   const pay = async (amount) => {
-    let a = await initiate(amount,name,paymentForm)
+    let a = await initiate(amount,msg,paymentForm,name)
     let orderid = a.id
     var options = {
       key: process.env.RAZ_ID, // Enter the Key ID generated from the Dashboard
       amount: amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       currency: "INR",
       name: "Buy me a beer", //your business name
-      description: {msg},
+      description: paymentForm.msg,
       image: "https://example.com/your_logo",
       order_id: orderid, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      callback_url: "https://locahost:3000/api/razorpay",
+      callback_url: `${process.env.WEB_URL}/api/razorpay`,
       prefill: {
         //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
-        name: {name}, //your customer's name
+        name: paymentForm.name, //your customer's name
         email: "gaurav.kumar@example.com",
         contact: "9000090000", //Provide the customer's phone number for better conversion rates
       },
@@ -32,17 +33,22 @@ function Page() {
         address: "Razorpay Corporate Office",
       },
       theme: {
-        color: "#3399cc",
+        color: "#000000",
       },
     };
     var rzp1 = new Razorpay(options);
     rzp1.open();
   };
-  const [msg, setMsg] = useState("");
-  const [amount, setAmount] = useState(false);
   const changeHandler = (e) => {
     setPaymentForm({...paymentForm,[e.target.name]:[e.target.value]})
+    if(e.target.name=="name"){
+      setName(e.target.value)
+    }
+    if(e.target.name=="msg"){
+      setMsg(e.target.value)
+    }
   };
+  const [noti,setNoti] = useState("");
   return (
     <>
       <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
@@ -55,20 +61,16 @@ function Page() {
         />
       </div>
       <div className="h-auto pb-10 lg:w-[400px] m-5 lg:absolute top-[350px] left-[250px] rounded-3xl bg-white">
-        <h1 className="p-10 font-mono font-semibold text-3xl">
+        <h1 className="p-10 font-mono font-semibold text-3xl ">
           Buy Ash a Beer
         </h1>
+        <div className="flex gap-5 pl-2 mx-4">
+          <button className={`${amt==100?"bg-blue-500 text-white":"text-blue-500 border"} p-3 rounded-full`} onClick={()=>{setAmt(100)}}>₹100</button>
+          <button className={`${amt==200?"bg-blue-500 text-white":"text-blue-500 border"} p-3 rounded-full`} onClick={()=>{setAmt(200)}}>₹200</button>
+          <button className={`${amt==500?"bg-blue-500 text-white":"text-blue-500 border"} p-3 rounded-full`} onClick={()=>{setAmt(500)}}>₹500</button>
+          <input type="text" className="w-12 pl-2 outline-none border" value={amt} onChange={(e)=>{isNaN(parseInt(e.target.value))?setAmt(0):setAmt(parseInt(e.target.value))}}/>
+        </div>
         <div>
-          <div>
-            <span className="ml-10">Choose an amount:</span>
-            <div className="ml-10 grid grid-flow-col gap-3 grid-rows-2">
-              <div className="cursor-pointer bg-black text-white font-semibold font-sans px-5 rounded-full w-[70px]" onClick={()=>{setAmt(1000)}}>10</div>
-              <div className="cursor-pointer bg-black text-white font-semibold font-sans px-5 rounded-full w-[70px]" onClick={()=>{setAmt(5000)}}>50</div>
-              <div className="cursor-pointer bg-black text-white font-semibold font-sans px-5 rounded-full w-[70px]" onClick={()=>{setAmt(10000)}}>100</div>
-              <div className="cursor-pointer bg-black text-white font-semibold font-sans px-5 rounded-full w-[70px]" onClick={()=>{setAmt(50000)}}>500</div>
-              <div className="cursor-pointer bg-black text-white font-semibold font-sans px-5 rounded-full w-[70px]" onClick={()=>{setAmt(100000)}}>1000</div>
-            </div>
-          </div>
           <div>
             <div class="input-container">
               <input
@@ -93,7 +95,7 @@ function Page() {
                 type="text"
                 value={paymentForm.msg}
                 onChange={changeHandler}
-                name="message"
+                name="msg"
               />
               <label for="input-field" class="input-label">
                 Message
@@ -103,7 +105,8 @@ function Page() {
           </div>
           <div className="flex flex-col mx-10 gap-5 mt-10">
             <span>Choose payment method:</span>
-            <div onClick={()=>{pay(amt)}}><Btn /></div>
+            <div className="w-28" onClick={()=>{msg?amt>=1?name?pay(amt*100):setNoti("Enter Your Name First!"):setNoti("Amount Cannot Be Less Than 10!(Loose your pocket a little bit misser)"):setNoti("Enter A Message First!")}}><Btn /></div>
+            <div className="text-red-600">{noti}</div>
             <Btn2 />
           </div>
         </div>

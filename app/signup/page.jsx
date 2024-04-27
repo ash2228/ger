@@ -2,12 +2,14 @@
 import {React,useEffect} from 'react'
 import '@/app/signup/page.css'
 import { signIn,useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 
 function Page() {
     const {data:session} = useSession()
+    const router = useRouter()
     useEffect(()=>{
-        if(session && session.user){
-            window.location.href = "/account"
+        if(session){
+            router.push("/account")
         }
     },[session])
   return (

@@ -1,5 +1,5 @@
 
-button {
+.btnn{
     background: linear-gradient(30deg, #000 35%, #ea8b19 73%);
     position: relative;
     padding: 17px 45px;
@@ -83,13 +83,13 @@ button {
     transition: all .8s ease;
   }
   
-  button:hover {
+  .btnn:hover {
     background: #000;
     color: #ea8b19;
     box-shadow: 0 0 50px #ea8b19;
   }
   
-  button:hover .star-1 {
+  .btnn:hover .star-1 {
     position: absolute;
     top: -110%;
     left: -60%;
@@ -99,7 +99,7 @@ button {
     z-index: 2;
   }
   
-  button:hover .star-2 {
+  .btnn:hover .star-2 {
     position: absolute;
     top: -45%;
     left: 0%;
@@ -109,7 +109,7 @@ button {
     z-index: 2;
   }
   
-  button:hover .star-3 {
+  .btnn:hover .star-3 {
     position: absolute;
     top: 55%;
     left: 15%;
@@ -119,7 +119,7 @@ button {
     z-index: 2;
   }
   
-  button:hover .star-4 {
+  .btnn:hover .star-4 {
     position: absolute;
     top: 45%;
     left: 85%;
@@ -129,7 +129,7 @@ button {
     z-index: 2;
   }
   
-  button:hover .star-5 {
+  .btnn:hover .star-5 {
     position: absolute;
     top: 25%;
     left: 140%;
@@ -139,7 +139,7 @@ button {
     z-index: 2;
   }
   
-  button:hover .star-6 {
+  .btnn:hover .star-6 {
     position: absolute;
     top: -5%;
     left: 60%;

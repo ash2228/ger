@@ -2,17 +2,21 @@
 import "@/app/account/style.css";
 import { getSession, signOut, useSession } from "next-auth/react";
 import { React, useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 function Page() {
   const { data: session } = useSession();
   const [name, setName] = useState(null);
   const [image, setImage] = useState(null);
+  const [login,setLogin] = useState(false)
+  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
       if (session && session.user) {
         setName(session.user.name);
         setImage(session.user.image);
+        setLogin(true);
       }
       
     };
@@ -21,11 +25,11 @@ function Page() {
   }, [session]);
   
 
-  return (
+  return login?(
     <>
     <div className="w-[100vw]">
         <h1 className="inline font-bold ml-5">Daru ID</h1>
-        <button class="Btn float-right inline" onClick={()=>{signOut()}}>
+        <div class="Btn float-right inline" onClick={()=>{signOut()}}>
   <div class="sign">
     <svg viewBox="0 0 512 512">
       <path
@@ -35,17 +39,22 @@ function Page() {
   </div>
 
   <div class="text">Logout</div>
-</button>
+</div>
 
         <hr />
     </div>
-      <div class="card m-auto lg:ml-6 mt-5">
+      <div class="card21 m-auto lg:ml-6 mt-5">
         <img src={image} alt="" className="rounded-xl" />
         <p className="invisible">Powered By</p>
         <p>{name}</p>
       </div>
     </>
-  );
+  ):(
+    <>
+    <h1 className="m-auto text-center mt-56">Please Login first</h1>
+    <h1 className="m-auto text-center mt-5 bg-slate-500 p-5 py-2 w-[200px] text-white" onClick={()=>{router.push("/signup")}}>Login</h1>
+    </>
+  )
 }
 
 export default Page;

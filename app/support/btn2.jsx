@@ -4,7 +4,7 @@ import "@/app/support/btn2.css"
 function Btn2() {
   return (
     <div>
-        <button>
+        <button className='btnn'>
   <span class="box">
   BTC
   <div class="star-1">
