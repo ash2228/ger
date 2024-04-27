@@ -2,8 +2,6 @@
 import Razorpay from "razorpay"
 import payment from "../models/payment"
 import mongoose from "mongoose"
-import { MongoClient } from "mongodb";
-import user from "../models/user";
 
 export const initiate = async(amount,to_username,paymentForm,Name,msg)=>{
     await mongoose.connect(`mongodb+srv://ashmeet:hdsotwas@payments.frhs4mg.mongodb.net/payments`);
@@ -20,6 +18,5 @@ export const initiate = async(amount,to_username,paymentForm,Name,msg)=>{
 export const fetchpayments = async ()=>{
     await mongoose.connect(`mongodb+srv://ashmeet:hdsotwas@payments.frhs4mg.mongodb.net/payments`);
     let u = await payment.find({done:true}).lean();
-    let result = Object.keys(u).map((key) => [key, u[key]]);
     return u;
 }
