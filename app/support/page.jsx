@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import { React, useState } from "react";
 import "@/app/support/style.css";
 import Btn from "./btn";
