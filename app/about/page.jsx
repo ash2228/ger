@@ -1,9 +1,6 @@
 import React from 'react'
 
-function About ({res}) {
-  if(res){
-  res.setHeader('Cache-Control', 'no-store');
-  }
+function About () {
   return (
     <>
     <div className='grid font-Oswald lg:grid-cols-2 gap-5 mt-10'>
