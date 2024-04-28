@@ -8,7 +8,6 @@ import { initiate } from "../actions/useractions";
 import { fetchpayments } from "../actions/useractions";
 
 
-
 function Page() {
   
   let [paymentForm,setPaymentForm] = useState({})
@@ -24,7 +23,7 @@ function Page() {
       currency: "INR",
       name: "Buy me a beer", //your business name
       description: paymentForm.msg,
-      image: "https://example.com/your_logo",
+      image: "https://clipart-library.com/images/dT45Ep4kc.png",
       order_id: orderid, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
       callback_url: `/api/razorpay`,
       prefill: {
