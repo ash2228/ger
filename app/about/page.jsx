@@ -5,7 +5,7 @@ function About () {
     <>
     <div className='grid font-Oswald lg:grid-cols-2 gap-5 mt-10'>
     <div className='flex flex-col gap-5 bg-white p-5 rounded-3xl hover:bg-slate-900 hover:text-white cursor-default pr-20'>
-      <h1 className='font-semibold'>Welcome to Ashs Patreon Page!</h1>
+      <h1 className='font-semibold'>Welcome to Ash&apos;s Patreon Page!</h1>
       <p>Thank you for considering supporting our project. We are excited to share with you our journey and the impact we aim to make with your help.</p>
     </div>
     <div className='flex flex-col gap-5 bg-white p-5 rounded-3xl hover:bg-slate-900 hover:text-white cursor-default pr-20'>
