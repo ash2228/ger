@@ -21,7 +21,7 @@ export const POST = async(req)=> {
       // Update the payment status
       const updatedPayment = await payment.findOneAndUpdate({oid: body.
       razorpay_order_id}, {done: "true"}, {new: true})
-      router.push(`${process.env.WEB_URL}/?paymentdone=true`)
+      return NextResponse.redirect(`${process.env.WEB_URL}/?paymentdone=true`)
       }
       else{
         return NextResponse.json({success:false,message:"Payment verification failed"})
