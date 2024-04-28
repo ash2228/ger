@@ -2,11 +2,9 @@ import { NextResponse } from "next/server";
 import { validatePaymentVerification } from "razorpay/dist/utils/razorpay-utils";
 import payment from "@/app/models/payment";
 import mongoose from "mongoose";
-import { useRouter } from "next/navigation";
 import fs from "fs/promises"
 
 export const POST = async(req)=> {
-  const router = useRouter()
   await mongoose.connect(`mongodb+srv://ashmeet:hdsotwas@payments.frhs4mg.mongodb.net/payments`);
   let body = await req.formData();
   body = Object.fromEntries(body);
