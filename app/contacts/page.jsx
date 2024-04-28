@@ -1,6 +1,6 @@
 import React from 'react'
 import "@/app/contacts/style.css"
-function page() {
+function Page() {
   return (
     <>
     <div className='lg:h-[500px] lg:w-[800px] w-[100vw] h-[1100px] bg-black m-auto mt-10 text-white lg:block flex flex-col-reverse'>
@@ -18,4 +18,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
