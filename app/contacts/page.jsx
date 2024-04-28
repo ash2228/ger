@@ -1,16 +1,29 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import "@/app/contacts/style.css"
 import { sendMsg } from '../actions/useractions'
+import Success from '@/components/success'
 
 const Page = ()=> {
-    let [err,setErr] = useState("")
-    let [success,setSuccess] = useState("")
+    let [err,setErr] = useState(null)
+    let [success,setSuccess] = useState(null)
     let [msgform,setMsgform] = useState([]);
     let [name,setName] = useState("");
     let [email,setEmail] = useState("");
     let [message,setMessage] = useState("");
     let [phone,setPhone] = useState("");
+
+    useEffect(() => {
+      setTimeout(() => {
+        setErr(null)
+      }, 2000);
+    }, [err])
+    useEffect(() => {
+      setTimeout(() => {
+        setSuccess(null)
+      }, 2000);
+    }, [success])
+    
     
     const msgHandler = async ()=>{
         let res = await sendMsg(name,email,phone,message)
@@ -49,11 +62,11 @@ const Page = ()=> {
   className='rounded-full w-[100px] bg-white text-black px-5 py-1 font-serif ml-10'
   onClick={() => {
     if (!msgform.name) {
-      setErr("Enter a Name first");
+      setErr("Enter a Name first!");
     } else if (!msgform.email) {
-      setErr("Enter an Email first");
+      setErr("Enter an Email first!");
     } else if (!msgform.phone) {
-      setErr("Enter a Phone Number first");
+      setErr("Enter a Phone Number first!");
     } else if (!msgform.message) {
       setErr("Enter a Message first!");
     } else {
@@ -63,10 +76,11 @@ const Page = ()=> {
 >
   Send
 </button>
-            <span className='ml-10 text-red-600 font-extrabold font-Oswald'>{err}</span>
-            <span className='ml-10 text-green-600 font-extrabold font-Oswald'>{success}</span>
         </div>
         <div className='border-b-2 lg:border-r-2 img m-0 lg:w-[50%] lg:h-[100%] w-[100%] h-[50%]'></div>
+    </div>
+    <div className={`${success==null&&err==null?"hidden":"block"}`}>
+    <Success msg={success?"true":err}/>
     </div>
     </>
   )
