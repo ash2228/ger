@@ -2,6 +2,7 @@
 import Razorpay from "razorpay"
 import payment from "../models/payment"
 import mongoose from "mongoose"
+import messages from "../models/messages"
 
 export const initiate = async(amount,to_username,paymentForm,Name,msg)=>{
     await mongoose.connect(`mongodb+srv://ashmeet:hdsotwas@payments.frhs4mg.mongodb.net/payments`);
@@ -19,4 +20,16 @@ export const fetchpayments = async ()=>{
     await mongoose.connect(`mongodb+srv://ashmeet:hdsotwas@payments.frhs4mg.mongodb.net/payments`);
     let u = await payment.find({done:true}).lean();
     return u;
+}
+
+export const sendMsg = async (user,Email,Phone,Msg)=>{
+    await mongoose.connect(`mongodb+srv://ashmeet:hdsotwas@payments.frhs4mg.mongodb.net/payments`);
+    Phone = Number.parseInt(Phone)
+    let hey = await messages.create({name:user,email:Email,phone:Phone,message:Msg})
+    if(hey){
+        return true;
+    }
+    else{
+        return false;
+    }
 }

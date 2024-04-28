@@ -11,4 +11,4 @@ const PaymentSchema = new Schema({
     updatedAt: { type: Date, default: Date.now },
     done: { type: Boolean, default: false },
     });
-    export default mongoose.models. Payment || model("Payment", PaymentSchema);;
+    export default mongoose.models. Payment || model("Payment", PaymentSchema);
