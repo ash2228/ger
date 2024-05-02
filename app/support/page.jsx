@@ -117,7 +117,7 @@ function Page() {
           </div>
           <div className="flex flex-col mx-10 gap-5 mt-10">
             <span>Choose payment method:</span>
-            <div className="w-28" onClick={()=>{msg?amt>=10?name?pay(amt*100):setNoti("Enter Your Name First!"):setNoti("Amount Cannot Be Less Than 10!(Loose your pocket a little bit misser)"):setNoti("Enter A Message First!")}}><Btn /></div>
+            <div className="w-28" onClick={()=>{msg?amt>=1?name?pay(amt*100):setNoti("Enter Your Name First!"):setNoti("Amount Cannot Be Less Than 10!(Loose your pocket a little bit misser)"):setNoti("Enter A Message First!")}}><Btn /></div>
             <div className="text-red-600">{noti}</div>
             <Btn2 />
           </div>
